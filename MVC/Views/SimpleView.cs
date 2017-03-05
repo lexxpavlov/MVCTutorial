@@ -47,20 +47,5 @@ namespace MVC.Views
         {
             Console.WriteLine("Результат: {0}", result);
         }
-
-        public bool RunAgain()
-        {
-            do
-            {
-                Console.WriteLine("Запустить ещё раз? [Enter - да, Esc - выход]");
-                switch (Console.ReadKey(true).Key)
-                {
-                    case ConsoleKey.Enter:
-                        return true;
-                    case ConsoleKey.Escape:
-                        return false;
-                }
-            } while (true);
-        }
     }
 }

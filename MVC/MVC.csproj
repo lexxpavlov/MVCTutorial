@@ -43,12 +43,16 @@
   <ItemGroup>
     <Compile Include="CalcController.cs" />
     <Compile Include="Calculation\SimpleCalculator.cs" />
+    <Compile Include="Calculation\SquareRootCalculator.cs" />
+    <Compile Include="Models\DoubleModel.cs" />
     <Compile Include="Models\SimpleModel.cs" />
     <Compile Include="Operation.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\ConsoleHelper.cs" />
+    <Compile Include="Views\CommonView.cs" />
     <Compile Include="Views\SimpleView.cs" />
+    <Compile Include="Views\SquareRootView.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

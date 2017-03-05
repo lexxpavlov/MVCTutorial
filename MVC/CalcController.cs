@@ -5,15 +5,31 @@ namespace MVC
 {
     public class CalcController
     {
+        private readonly CommonView _commonView = new CommonView();
+
         public void Run()
         {
-            var view = new SimpleView();
             do
             {
-                var model = view.GetModel();
-                var result = new SimpleCalculator(model).Calc();
-                view.PrintResult(result);
-            } while (view.RunAgain());
+                double result;
+                switch (_commonView.GetViewIndex())
+                {
+                    case 0:
+                        var simpleView = new SimpleView();
+                        var simpleModel = simpleView.GetModel();
+                        result = new SimpleCalculator(simpleModel).Calc();
+                        simpleView.PrintResult(result);
+                        break;
+                    case 1:
+                        var squareRootView = new SquareRootView();
+                        var squareRootModel = squareRootView.GetModel();
+                        result = new SquareRootCalculator(squareRootModel).Calc();
+                        squareRootView.PrintResult(result);
+                        break;
+                    default:
+                        continue;
+                }
+            } while (_commonView.RunAgain());
         }
     }
 }
