@@ -4,9 +4,11 @@ using System;
 
 namespace MVC.Views
 {
-    public class SquareRootView
+    public class SquareRootView : ICalculationView
     {
-        public DoubleModel GetModel()
+        public string Title { get { return "Расчёт квадратного корня"; } }
+
+        public IDataModel GetModel()
         {
             double number = ConsoleHelper.ReadDouble("Введите число: ");
             return new DoubleModel(number);

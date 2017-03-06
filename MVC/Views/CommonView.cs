@@ -7,28 +7,22 @@ namespace MVC.Views
 {
     class CommonView
     {
-        private readonly List<string> _views = new List<string>
-        {
-            "Расчёт арифметических операций",
-            "Расчёт квадратного корня",
-        };
-
-        public int GetViewIndex()
+        public ICalculationView GetView(List<ICalculationView> views)
         {
             Console.WriteLine("Расчёты:");
             int n = 1;
-            foreach (var view in _views)
+            foreach (var view in views)
             {
-                Console.WriteLine("{0} - {1}", n++, view);
+                Console.WriteLine("{0} - {1}", n++, view.Title);
             }
 
             int choice;
             do
             {
                 choice = ConsoleHelper.ReadInt("Выберите расчёт: ");
-            } while (choice < 1 || choice > _views.Count);
+            } while (choice < 1 || choice > views.Count);
 
-            return choice - 1;
+            return views[choice - 1];
         }
 
         public bool RunAgain()

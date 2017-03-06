@@ -3,7 +3,7 @@ using MVC.Models;
 
 namespace MVC.Calculation
 {
-    public class SimpleCalculator
+    public class SimpleCalculator : ICalculator
     {
         public SimpleModel Model { get; private set; }
 

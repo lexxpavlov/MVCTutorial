@@ -3,7 +3,7 @@ using MVC.Models;
 
 namespace MVC.Calculation
 {
-    public class SquareRootCalculator
+    public class SquareRootCalculator : ICalculator
     {
         public DoubleModel Model { get; private set; }
 

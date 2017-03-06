@@ -6,7 +6,7 @@ using MVC.Utils;
 
 namespace MVC.Views
 {
-    public class SimpleView
+    public class SimpleView : ICalculationView
     {
         private Dictionary<Operation, string> _operations = new Dictionary<Operation, string>
         {
@@ -16,7 +16,9 @@ namespace MVC.Views
             {Operation.Div, "Деление"}
         };
 
-        public SimpleModel GetModel()
+        public string Title { get { return "Расчёт арифметических операций"; } }
+
+        public IDataModel GetModel()
         {
             double x = ConsoleHelper.ReadDouble("Введите первое число: ");
             double y = ConsoleHelper.ReadDouble("Введите второе число: ");

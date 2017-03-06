@@ -1,6 +1,6 @@
 ﻿namespace MVC.Models
 {
-    public class DoubleModel
+    public class DoubleModel : IDataModel
     {
         public double Number { get; private set; }
 
