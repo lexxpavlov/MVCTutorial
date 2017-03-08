@@ -45,7 +45,10 @@
     <Compile Include="Calculation\Calculator.cs" />
     <Compile Include="Calculation\ICalculator.cs" />
     <Compile Include="Calculation\SimpleCalculator.cs" />
+    <Compile Include="Calculation\ListStatisticCalculator.cs" />
     <Compile Include="Calculation\SquareRootCalculator.cs" />
+    <Compile Include="Models\ListStatisticModel.cs" />
+    <Compile Include="Models\ListModel.cs" />
     <Compile Include="Models\DoubleModel.cs" />
     <Compile Include="Models\IDataModel.cs" />
     <Compile Include="Models\SimpleModel.cs" />
@@ -56,7 +59,9 @@
     <Compile Include="Views\CommonView.cs" />
     <Compile Include="Views\ICalculationView.cs" />
     <Compile Include="Views\SimpleView.cs" />
+    <Compile Include="Views\ListStatisticView.cs" />
     <Compile Include="Views\SquareRootView.cs" />
+    <Compile Include="Views\Validators\NotNegativeValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

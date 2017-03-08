@@ -10,6 +10,7 @@ namespace MVC
         {
             new SimpleView(),
             new SquareRootView(),
+            new ListStatisticView(),
         };
 
         private readonly CommonView _commonView = new CommonView();
@@ -20,7 +21,7 @@ namespace MVC
             {
                 var view = _commonView.GetView(_views);
                 var model = view.GetModel();
-                double result = Calculator.Calc(model);
+                var result = Calculator.Calc(model);
                 view.PrintResult(result);
             } while (_commonView.RunAgain());
         }

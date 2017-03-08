@@ -8,6 +8,6 @@ namespace MVC.Views
 
         IDataModel GetModel();
 
-        void PrintResult(double result);
+        void PrintResult(IDataModel result);
     }
 }

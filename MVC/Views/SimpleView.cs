@@ -45,9 +45,15 @@ namespace MVC.Views
             return _operations.Keys.ToList()[choice - 1];
         }
 
-        public void PrintResult(double result)
+        public void PrintResult(IDataModel result)
         {
-            Console.WriteLine("Результат: {0}", result);
+            var model = result as DoubleModel;
+            if (model == null)
+            {
+                Console.WriteLine("Неверный тип результата");
+                return;
+            }
+            Console.WriteLine("Результат: {0}", model.Number);
         }
     }
 }

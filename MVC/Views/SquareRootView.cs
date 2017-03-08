@@ -1,4 +1,5 @@
 ﻿using MVC.Models;
+using MVC.Views.Validators;
 using MVC.Utils;
 using System;
 
@@ -10,13 +11,30 @@ namespace MVC.Views
 
         public IDataModel GetModel()
         {
-            double number = ConsoleHelper.ReadDouble("Введите число: ");
+            double number;
+            do
+            {
+                number = ConsoleHelper.ReadDouble("Введите число: ");
+                var error = new NotNegativeValidator().Validate(number);
+                if (string.IsNullOrEmpty(error))
+                {
+                    break;
+                }
+                Console.WriteLine(error);
+            } while (true);
             return new DoubleModel(number);
         }
 
-        public void PrintResult(double result)
+        public void PrintResult(IDataModel result)
         {
-            Console.WriteLine("Результат: {0}", result);
+            var model = result as DoubleModel;
+            if (model == null)
+            {
+                Console.WriteLine("Неверный тип результата");
+                return;
+            }
+
+            Console.WriteLine("Результат: {0}", model.Number);
         }
     }
 }

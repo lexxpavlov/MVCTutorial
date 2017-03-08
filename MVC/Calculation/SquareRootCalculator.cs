@@ -12,9 +12,10 @@ namespace MVC.Calculation
             Model = model;
         }
 
-        public double Calc()
+        public IDataModel Calc()
         {
-            return Math.Sqrt(Model.Number);
+            double result = Math.Sqrt(Model.Number);
+            return new DoubleModel(result);
         }
     }
 }

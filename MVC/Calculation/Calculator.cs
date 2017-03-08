@@ -5,7 +5,7 @@ namespace MVC.Calculation
 {
     public static class Calculator
     {
-        public static double Calc(IDataModel model)
+        public static IDataModel Calc(IDataModel model)
         {
             if (model is SimpleModel)
             {
@@ -14,6 +14,10 @@ namespace MVC.Calculation
             if (model is DoubleModel)
             {
                 return new SquareRootCalculator((DoubleModel)model).Calc();
+            }
+            if (model is ListModel)
+            {
+                return new ListStatisticCalculator((ListModel)model).Calc();
             }
             throw new ArgumentException("Неизвестный тип модели!");
         }

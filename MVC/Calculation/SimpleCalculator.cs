@@ -12,20 +12,27 @@ namespace MVC.Calculation
             Model = model;
         }
 
-        public double Calc()
+        public IDataModel Calc()
         {
+            double result = 0;
             switch (Model.Operation)
             {
                 case Operation.Add:
-                    return Model.X + Model.Y;
+                    result = Model.X + Model.Y;
+                    break;
                 case Operation.Sub:
-                    return Model.X - Model.Y;
+                    result = Model.X - Model.Y;
+                    break;
                 case Operation.Mul:
-                    return Model.X * Model.Y;
+                    result = Model.X * Model.Y;
+                    break;
                 case Operation.Div:
-                    return Model.X / Model.Y;
+                    result = Model.X / Model.Y;
+                    break;
+                default:
+                    throw new ArgumentException(string.Format("Неизвестная операция: {0}", Model.Operation));
             }
-            throw new ArgumentException(string.Format("Неизвестная операция: {0}", Model.Operation));
+            return new DoubleModel(result);
         }
     }
 }
