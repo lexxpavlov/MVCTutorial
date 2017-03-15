@@ -1,4 +1,4 @@
-﻿namespace MVC
+﻿namespace MVC.Models
 {
     public enum Operation
     {

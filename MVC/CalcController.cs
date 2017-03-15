@@ -1,4 +1,5 @@
 ﻿using MVC.Calculation;
+using MVC.Models;
 using MVC.Views;
 using System.Collections.Generic;
 
@@ -6,11 +7,11 @@ namespace MVC
 {
     public class CalcController
     {
-        private readonly List<ICalculationView> _views = new List<ICalculationView>
+        private readonly List<IComputation> _computations = new List<IComputation>
         {
-            new SimpleView(),
-            new SquareRootView(),
-            new ListStatisticView(),
+            new Computation<SimpleModel, DoubleModel>("Арифметические расчёты", typeof(SimpleCalculator), typeof(SimpleView)),
+            new Computation<DoubleModel, DoubleModel>("Расчёт квадратного корня", typeof(SquareRootCalculator), typeof(SquareRootView)),
+            new Computation<ListModel, ListStatisticModel>("Статистика списка чисел", typeof(ListStatisticCalculator), typeof(ListStatisticView)),
         };
 
         private readonly CommonView _commonView = new CommonView();
@@ -19,9 +20,10 @@ namespace MVC
         {
             do
             {
-                var view = _commonView.GetView(_views);
+                var computation = _commonView.GetComputation(_computations);
+                var view = computation.GetView();
                 var model = view.GetModel();
-                var result = Calculator.Calc(model);
+                var result = computation.GetCalculator(model).Calc();
                 view.PrintResult(result);
             } while (_commonView.RunAgain());
         }

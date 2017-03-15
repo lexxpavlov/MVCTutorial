@@ -42,20 +42,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CalcController.cs" />
-    <Compile Include="Calculation\Calculator.cs" />
+    <Compile Include="Calculation\AbstractCalculator.cs" />
     <Compile Include="Calculation\ICalculator.cs" />
     <Compile Include="Calculation\SimpleCalculator.cs" />
     <Compile Include="Calculation\ListStatisticCalculator.cs" />
     <Compile Include="Calculation\SquareRootCalculator.cs" />
+    <Compile Include="Computation.cs" />
     <Compile Include="Models\ListStatisticModel.cs" />
     <Compile Include="Models\ListModel.cs" />
     <Compile Include="Models\DoubleModel.cs" />
     <Compile Include="Models\IDataModel.cs" />
     <Compile Include="Models\SimpleModel.cs" />
-    <Compile Include="Operation.cs" />
+    <Compile Include="Models\Operation.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\ConsoleHelper.cs" />
+    <Compile Include="Views\AbstractView.cs" />
     <Compile Include="Views\CommonView.cs" />
     <Compile Include="Views\ICalculationView.cs" />
     <Compile Include="Views\SimpleView.cs" />

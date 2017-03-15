@@ -3,18 +3,18 @@ using MVC.Models;
 
 namespace MVC.Calculation
 {
-    public class SimpleCalculator : ICalculator
+    public class SimpleCalculator : AbstractCalculator<SimpleModel, DoubleModel>
     {
-        public SimpleModel Model { get; private set; }
+        public override SimpleModel Model { get; protected set; }
 
         public SimpleCalculator(SimpleModel model)
         {
             Model = model;
         }
 
-        public IDataModel Calc()
+        public override DoubleModel Calc()
         {
-            double result = 0;
+            double result;
             switch (Model.Operation)
             {
                 case Operation.Add:

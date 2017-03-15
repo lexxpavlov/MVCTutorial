@@ -3,19 +3,18 @@ using MVC.Models;
 
 namespace MVC.Calculation
 {
-    public class SquareRootCalculator : ICalculator
+    public class SquareRootCalculator : AbstractCalculator<DoubleModel, DoubleModel>
     {
-        public DoubleModel Model { get; private set; }
+        public override DoubleModel Model { get; protected set; }
 
         public SquareRootCalculator(DoubleModel model)
         {
             Model = model;
         }
 
-        public IDataModel Calc()
+        public override DoubleModel Calc()
         {
-            double result = Math.Sqrt(Model.Number);
-            return new DoubleModel(result);
+            return new DoubleModel(Math.Sqrt(Model.Number));
         }
     }
 }

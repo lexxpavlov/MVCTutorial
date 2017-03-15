@@ -5,11 +5,9 @@ using System;
 
 namespace MVC.Views
 {
-    public class SquareRootView : ICalculationView
+    public class SquareRootView : AbstractView<DoubleModel, DoubleModel>
     {
-        public string Title { get { return "Расчёт квадратного корня"; } }
-
-        public IDataModel GetModel()
+        public override DoubleModel GetModel()
         {
             double number;
             do
@@ -25,15 +23,8 @@ namespace MVC.Views
             return new DoubleModel(number);
         }
 
-        public void PrintResult(IDataModel result)
+        public override void PrintResult(DoubleModel model)
         {
-            var model = result as DoubleModel;
-            if (model == null)
-            {
-                Console.WriteLine("Неверный тип результата");
-                return;
-            }
-
             Console.WriteLine("Результат: {0}", model.Number);
         }
     }

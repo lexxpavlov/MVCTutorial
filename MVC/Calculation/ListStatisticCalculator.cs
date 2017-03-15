@@ -3,16 +3,16 @@ using MVC.Models;
 
 namespace MVC.Calculation
 {
-    public class ListStatisticCalculator : ICalculator
+    public class ListStatisticCalculator : AbstractCalculator<ListModel, ListStatisticModel>
     {
-        public ListModel Model { get; private set; }
+        public override ListModel Model { get; protected set; }
 
         public ListStatisticCalculator(ListModel model)
         {
             Model = model;
         }
 
-        public IDataModel Calc()
+        public override ListStatisticModel Calc()
         {
             double min = Model.List.Min();
             double max = Model.List.Max();
