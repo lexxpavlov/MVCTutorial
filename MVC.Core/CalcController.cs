@@ -17,7 +17,7 @@ namespace MVC.Core
         public bool Run()
         {
             var computation = _commonView.GetComputation(_computations);
-            var view = computation.GetView();
+            var view = computation.View;
             var model = view.GetModel();
             var result = computation.GetCalculator(model).Calc();
             view.PrintResult(result);

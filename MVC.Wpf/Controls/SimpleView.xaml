@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="MVC.Wpf.Controls.SimpleView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MVC.Wpf.Controls"
+             xmlns:views="clr-namespace:MVC.Wpf.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300"
+             d:DataContext="{d:DesignInstance views:SimpleView, IsDesignTimeCreatable=True}">
+    <StackPanel>
+        <Label Content="Первое число"/>
+        <TextBox Text="{Binding X, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+        <Label Content="Второе число"/>
+        <TextBox Text="{Binding Y, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+        <Label Content="Операция"/>
+        <ListBox ItemsSource="{Binding Operations}"
+                 SelectedItem="{Binding Operation}"/>
+        <Label Content="Результат"/>
+        <TextBox Text="{Binding Result}"
+                 IsReadOnly="True"/>
+    </StackPanel>
+</UserControl>

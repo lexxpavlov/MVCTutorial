@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="MVC.Wpf.Controls.ListStatisticView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MVC.Wpf.Controls"
+             xmlns:views="clr-namespace:MVC.Wpf.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300"
+             d:DataContext="{d:DesignInstance views:ListStatisticView, IsDesignTimeCreatable=True}">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">        
+        <StackPanel>
+            <DataGrid ItemsSource="{Binding List}" IsReadOnly="True" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Список элементов" Binding="{Binding}"/>
+                    <DataGridTemplateColumn Header="Действия">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Удалить" Tag="{Binding}" Click="ButtonDelete_Click"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            <WrapPanel Orientation="Horizontal" Margin="0 10">
+                <TextBox x:Name="NewNumberText" Width="50" />
+                <Button Content="Добавить" Click="ButtonAdd_Click" Margin="10 0" Padding="10 0" />
+                <Button Content="Очистить список" Click="ButtonClear_Click" Padding="10 0"/>
+            </WrapPanel>
+
+            <UniformGrid Columns="2">                
+                <TextBlock Text="Минимальное значение"/>
+                <TextBox Text="{Binding Min}" IsReadOnly="True"/>
+                <TextBlock Text="Максимальное значение"/>
+                <TextBox Text="{Binding Max}" IsReadOnly="True"/>
+                <TextBlock Text="Среднее значение"/>
+                <TextBox Text="{Binding Average}" IsReadOnly="True"/>
+            </UniformGrid>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

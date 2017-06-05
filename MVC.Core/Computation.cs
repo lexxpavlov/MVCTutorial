@@ -8,7 +8,9 @@ namespace MVC.Core
     public interface IComputation
     {
         string Title { get; }
-        ICalculationView GetView();
+        Type CalculatorType { get; }
+        Type ViewType { get; }
+        ICalculationView View { get; }
         ICalculator GetCalculator(IDataModel model);
     }
 
@@ -16,26 +18,22 @@ namespace MVC.Core
         where TModel : IDataModel 
         where TResult : IDataModel
     {
-        private Type _calculatorType;
-        private Type _viewType;
+        public string Title { get; }
+        public Type CalculatorType { get; }
+        public Type ViewType { get; }
+        public ICalculationView View { get; }
 
-        public string Title { get; private set; }
-        
         public Computation(string title, Type calculatorType, Type viewType)
         {
             Title = title;
-            _calculatorType = calculatorType;
-            _viewType = viewType;
-        }
-
-        public ICalculationView GetView()
-        {
-            return (ICalculationView)Activator.CreateInstance(_viewType);
-        }
+            CalculatorType = calculatorType;
+            ViewType = viewType;
+            View = (ICalculationView)Activator.CreateInstance(viewType);
+        }        
 
         public ICalculator GetCalculator(IDataModel model)
         {
-            return (ICalculator)Activator.CreateInstance(_calculatorType, model);
+            return (ICalculator)Activator.CreateInstance(CalculatorType, model);
         }
 
     }
